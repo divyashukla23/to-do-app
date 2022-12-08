@@ -1,80 +1,57 @@
-# EKS Cluster
-resource "aws_eks_cluster" "this" {
-  name     = "${var.eks_cluster_name}-cluster"
-  role_arn = aws_iam_role.cluster.arn
-  version  = "1.21"
+module "eks" {
+  source  = "terraform-aws-modules/eks/aws"
+  version = "18.26.6"
 
-  vpc_config {
-    # security_group_ids      = [aws_security_group.eks_cluster.id, aws_security_group.eks_nodes.id]
-    subnet_ids              = data.aws_subnet_ids.subnet_1.ids
-    endpoint_private_access = true
-    endpoint_public_access  = true
-    public_access_cidrs     = ["0.0.0.0/0"]
+  cluster_name    = var.eks_cluster_name
+  cluster_version = "1.22"
+
+  vpc_id     = data.aws_vpc.default_vpc.id
+  subnet_ids = data.aws_subnet_ids.subnet_1.ids
+
+  eks_managed_node_group_defaults = {
+    ami_type = "AL2_x86_64"
+
+    attach_cluster_primary_security_group = true
+
+    # Disabling and using externally provided security groups
+    create_security_group = false
   }
 
-  #   tags = merge(
-  #     var.tags
-  #   )
+  eks_managed_node_groups = {
+    one = {
+      name = "node-group-1"
 
-  depends_on = [
-    aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy
-  ]
-}
+      instance_types = ["t3.small"]
 
+      min_size     = 1
+      max_size     = 3
+      desired_size = 2
 
-# EKS Cluster IAM Role
-resource "aws_iam_role" "cluster" {
-  name = "${var.eks_cluster_name}-Cluster-Role"
+      pre_bootstrap_user_data = <<-EOT
+      echo 'foo bar'
+      EOT
 
-  assume_role_policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "eks.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
+      vpc_security_group_ids = [
+        aws_security_group.node_group_one.id
+      ]
     }
-  ]
+
+    two = {
+      name = "node-group-2"
+
+      instance_types = ["t3.medium"]
+
+      min_size     = 1
+      max_size     = 2
+      desired_size = 1
+
+      pre_bootstrap_user_data = <<-EOT
+      echo 'foo bar'
+      EOT
+
+      vpc_security_group_ids = [
+        aws_security_group.node_group_two.id
+      ]
+    }
+  }
 }
-POLICY
-}
-
-resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.cluster.name
-}
-
-
-# EKS Cluster Security Group
-# resource "aws_security_group" "eks_cluster" {
-#   name        = "${var.eks_cluster_name}-cluster-sg"
-#   description = "Cluster communication with worker nodes"
-#   vpc_id      = data.aws_vpc.default_vpc.id
-
-#   # tags = {
-#   #   Name = "${var.eks_cluster_name}-cluster-sg"
-#   # }
-# }
-
-# resource "aws_security_group_rule" "cluster_inbound" {
-#   description              = "Allow worker nodes to communicate with the cluster API Server"
-#   from_port                = 443
-#   protocol                 = "tcp"
-#   security_group_id        = aws_security_group.eks_cluster.id
-#  # source_security_group_id = aws_security_group.eks_nodes.id
-#   to_port                  = 443
-#   type                     = "ingress"
-# }
-
-# resource "aws_security_group_rule" "cluster_outbound" {
-#   description              = "Allow cluster API Server to communicate with the worker nodes"
-#   from_port                = 1024
-#   protocol                 = "tcp"
-#   security_group_id        = aws_security_group.eks_cluster.id
-#   #source_security_group_id = aws_security_group.eks_nodes.id
-#   to_port                  = 65535
-#   type                     = "egress"
-# }

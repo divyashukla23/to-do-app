@@ -10,7 +10,7 @@ terraform.tfstate
 .terraform
 # testing
 /coverage
-
+.terraform.tfstate.lock.info
 # production
 /build
 
