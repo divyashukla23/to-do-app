@@ -54,9 +54,9 @@ resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
 #   description = "Cluster communication with worker nodes"
 #   vpc_id      = data.aws_vpc.default_vpc.id
 
-#   tags = {
-#     Name = "${var.eks_cluster_name}-cluster-sg"
-#   }
+#   # tags = {
+#   #   Name = "${var.eks_cluster_name}-cluster-sg"
+#   # }
 # }
 
 # resource "aws_security_group_rule" "cluster_inbound" {

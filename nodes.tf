@@ -22,6 +22,7 @@ resource "aws_eks_node_group" "todo-node" {
 
   depends_on = [
     aws_iam_role_policy_attachment.node_AmazonEKSWorkerNodePolicy,
+     aws_iam_role_policy_attachment.node_NodeInstancePolicy,
     aws_iam_role_policy_attachment.node_AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.node_AmazonEC2ContainerRegistryReadOnly,
   ]
@@ -41,7 +42,7 @@ resource "aws_iam_role" "node" {
       "Principal": {
         "Service": "ec2.amazonaws.com"
       },
-      "Action": "sts:AssumeRole"
+      "Action":"sts:AssumeRole"
     }
   ]
 }
@@ -50,6 +51,11 @@ POLICY
 
 resource "aws_iam_role_policy_attachment" "node_AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+  role       = aws_iam_role.node.name
+}
+
+resource "aws_iam_role_policy_attachment" "node_NodeInstancePolicy" {
+  policy_arn = "arn:aws:iam::154647635698:policy/NodeInstancePolicy"
   role       = aws_iam_role.node.name
 }
 

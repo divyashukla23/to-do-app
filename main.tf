@@ -12,34 +12,58 @@ data "aws_subnet_ids" "subnet_1" {
 
 resource "aws_ecr_repository" "my_todo_app_ecr_repo" {
   name = var.ecr_repo_name # Naming my repository
+
 }
 
-# Adding IAM policy to ECR resources
-resource "aws_ecr_repository_policy" "demo-repo-policy" {
-repository = aws_ecr_repository.my_todo_app_ecr_repo.name
-  policy     = <<EOF
-  {
-    "Version": "2008-10-17",
-    "Statement": [
-      {
-        "Sid": "adds full ecr access to the demo repository",
-        "Effect": "Allow",
-        "Principal": "*",
-        "Action": [
-          "ecr:BatchCheckLayerAvailability",
-          "ecr:BatchGetImage",
-          "ecr:CompleteLayerUpload",
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:GetLifecyclePolicy",
-          "ecr:InitiateLayerUpload",
-          "ecr:PutImage",
-          "ecr:UploadLayerPart"
-        ]
-      }
-    ]
-  }
-  EOF
-}
+# # Adding IAM policy to ECR resources
+# resource "aws_ecr_repository_policy" "demo-repo-policy" {
+# repository = aws_ecr_repository.my_todo_app_ecr_repo.name
+#   policy     = <<EOF
+# {
+#     "Version": "2012-10-17",
+#     "Statement": [
+#         {
+#             "Effect": "Allow",
+#             "Action": [
+#                 "ecr:BatchCheckLayerAvailability",
+#                 "ecr:BatchGetImage",
+#                 "ecr:GetDownloadUrlForLayer",
+#                 "ecr:GetAuthorizationToken"
+#             ],
+#             "Resource": "*"
+#         }
+#     ]
+# }
+# EOF
+# }
+
+# resource "aws_iam_role" "repo" {
+#   name = "${var.ecr_repo_name}-ECR-Role"
+
+#   assume_role_policy = <<POLICY
+# {
+#   "Version": "2012-10-17",
+#   "Statement": [
+#     {
+#       "Effect": "Allow",
+#       "Principal": {
+#         "Service": "ec2.amazonaws.com"
+#       },
+#       "Action": "sts:AssumeRole"
+#     }
+#   ]
+# }
+# POLICY
+# }
+
+
+# resource "aws_iam_role_policy_attachment" "ecr_policy" {
+#   policy_arn = "arn:aws:iam::154647635698:policy/todo-app-12345"
+#   role       = aws_iam_role.repo.name
+# }
+
+
+
 
 
 

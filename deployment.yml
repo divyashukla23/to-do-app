@@ -15,14 +15,12 @@ spec:
         app: node-todo-app
     spec:
       containers:
-      - name: node-todo-app-container
+      - name: node-todo-app
         image: 154647635698.dkr.ecr.ap-southeast-1.amazonaws.com/todo-app-repo:latest
         imagePullPolicy: Always
         ports:
-          - name: web
-            containerPort: 3000
-      imagePullSecrets:
-          - name: regcred
+          - containerPort: 3000
+
         
      
 ---
@@ -33,6 +31,9 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 3000
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    nodePort: 30001
   selector:
     app: node-todo-app
