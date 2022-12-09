@@ -21,7 +21,6 @@ pipeline{
             steps{
                 sh '''
                     echo "Creating Repo, Building Image, Creating EKS cluster, Creating EKS worker nodes"
-                    terraform init -upgrade
                     terraform apply -auto-approve
                 '''
             }
