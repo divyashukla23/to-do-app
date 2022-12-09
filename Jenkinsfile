@@ -1,19 +1,14 @@
 pipeline{
     agent any
-    // environment{
-    //     DOCKER_IMAGE_NAME = "prasanna593/jenkins-demo"
-    //     DOCKER_USERNAME = "prasanna593"
-    //     DOCKER_PASSWORD = credentials('DOCKER_SECRET')
-    // }
     stages{
         stage('Terraform check'){
             steps{
                 sh '''
                     echo "Initializing the Terraform"
 
-                    export AWS_ACCESS_KEY_ID="ASIASIANXU3ZMRBXE6DO"
-                    export AWS_SECRET_ACCESS_KEY="fbXhEe2AAj/E8lmJVW9M1BvXWxKwnirUORzPRG/q"
-                    export AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjECEaDGV1LWNlbnRyYWwtMSJHMEUCIQCPVaXIBsFAUZNOtIA7h/rqRygewEc+iFM+W8kcnmatywIga3uJpK5WZrewXAnQLInWSVbD5PLHKCoU3tVu8QBYRUMqnAMIShACGgwxNTQ2NDc2MzU2OTgiDFtx11CFFvOmIJIweCr5AvHBhqbipgDwBqL7VGteGN6ElpF6V5n4zuOx3pntAJAHTHJsLBQAb+MSeD1QSLjRCDkfDOEEPSpWZSqT0YTvkElEHB6+POC/gTWCXrwI1prmClXT7Tx5XW5hS3lSKVlSr2VSEILOHeQCrLmKu25Dy7uxZfg9nOH1yKPF1JZ97chAABsjXv6q6t8gYAOfPPB5pWHhyJGwWicmVyPQFVgTlAbwiHQd3KpSjElaTwh2DvA+AAtcC4HIYH2rSUVMps+h7zQ8+T/tKAYmbhys5XHaTumLLUABB4wVXCv3eaONvkcvRh6XHbkAOVDJNuH8CVgwuSAxlhKOSJETeN+gn/45RF1Q1NLgHzZnJAiQ4uEOCLhakAALO4SDnjxEB1uI/j4GGuz6uClUD6KVaakcTGXMBFDMCak/LgdK4d4xmwj+e3wMcal9b3PLMjMLN+D/wuK8ZMdQbvnTsvucqbPrFES34Z76SxvW2H91fhDdIKWKxCRp1rflxb6peWrgMP+iyJwGOqYBupzowtsslPz+59bb2u5WejvxULYK62edR1ioPuMImE5G7rzzCXnygG9O4TVPGp//BsseX48n2vTY2CIEGVYKMaIxlFGjCVdeHiSYlkt5XtfzvHG1dMMFwXs7n7T/D0p0G7v5ygKmq9E3LFKvzLr85LkJ4Ltgt3qB0nmzVMxH59PhIeNDjgVwmBGbNkxywvfFYF7EymatR+CDxLERaoh5YJa2JHREkA=="
+                    export AWS_ACCESS_KEY_ID="ASIASIANXU3ZEX5ZKBO3"
+export AWS_SECRET_ACCESS_KEY="7HjDjw31Z9DXRtkN5ZRznY86ugk3e1f7FT5MZfQ9"
+export AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjECwaDGV1LWNlbnRyYWwtMSJHMEUCIQDDx49MPmTII9FJSUO7tNZTusaBN2rZXyEHZ47rTWxKdQIgElT56enj6EPNNHslpZpaNszpDtaWB8+q7c1ITsOMYXQqnAMIVRACGgwxNTQ2NDc2MzU2OTgiDHbS+3rSnCLHxWf1yir5AqMH3jFEfNOyUOZfiJma2m7YGRur0VPchwofZfWFZeBQH2JCnwzqaZrBuUrH0g+It7GOM4NxUDV+sxzCrBtdxA3PZ3bo4prOp6gn5d4yQpfVB70QO2GMwFK3AaliGhvXQ9QAs72sK3oHa6cE0klWCWQrFQbWzHR4SzC+dIFuYmwT7bcKCjBZ1AdI+OH649MMO4+pzs/9h7qlyuHDSn1nZc3HQtpuK42sNsQnQgcsYh4c+0O7jI8pBii09Q6idPgS/3OUlYIX79NxQrgrRPf2N8Z0wuMz0L4jmx5h/9106WXaxLUf4dAdjbISS15XEIpKJtQKJUXMkXiJuFKUq/aKizDTeYtNmJ5zTXnXi1ssCYM+pcHXp2P9cenC42qSbydp5Fnryz3M7xXrHoVevrglvt8cpXy3+py0CDCS+C5dhzwJiqfNe9Vb3Ij7TkQ6mcG1XiW61BqDGkp0Bl8/dFbGXHJ4ySmDemYljV5gsGqh4A00fnKZTU6Xq5AYMIXuypwGOqYB2jTS4pi9d3PvUxuCZ+6Kef9AP0cPeWCYbdaixnZhulTcqCd5aza1oD2nmb3JUfLuVnKYB8qX62DpzstrIB1gmzPcp8xVmxhHdwMT8PE77AyLVUrJqREbNxMSA3OCYcfc1GWgTFCbaaeREQjDy5q0PxJ1EH+SaR+FLpol4MekkyQGIAgquUUOw0GOX08ufmW0XE8IteQDtdboSAYj1oAEA6KlisEZsQ=="
                     terraform init -upgrade
                     echo "Formatting .tf files"
                     terraform fmt
