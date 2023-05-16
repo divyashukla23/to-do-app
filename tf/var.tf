@@ -7,7 +7,7 @@ variable "dockerfile_dir" {
 variable "ecr_repository_domain" {
   type        = string
   description = "Full url for the ECR repository"
-  default     = "154647635698.dkr.ecr.ap-southeast-1.amazonaws.com"
+  default     = "160071257600.dkr.ecr.ap-south-1.amazonaws.com"
 }
 
 variable "docker_image_tag" {
@@ -26,3 +26,5 @@ variable "eks_cluster_name" {
   description = "This is the tag which will be used for the image that you created"
   default     = "todo-app-Cluster"
 }
+
+
