@@ -19,7 +19,7 @@ variable "docker_image_tag" {
 variable "ecr_repo_name" {
   type        = string
   description = "This is the tag which will be used for the image that you created"
-  default     = "todo-app-repo"
+  default     = "todo-app"
 }
 variable "eks_cluster_name" {
   type        = string

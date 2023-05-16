@@ -23,3 +23,4 @@ resource "null_resource" "ecr_image" {
     command = "bash ${path.module}/bin/build.sh ${var.dockerfile_dir} ${var.ecr_repository_domain} ${var.docker_image_tag} ${var.ecr_repo_name}"
   }
 }
+
