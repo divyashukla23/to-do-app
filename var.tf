@@ -7,7 +7,7 @@ variable "dockerfile_dir" {
 variable "ecr_repository_domain" {
   type        = string
   description = "Full url for the ECR repository"
-  default     = "160071257600.dkr.ecr.ap-south-1.amazonaws.com"
+  default     = "029956535309.dkr.ecr.ap-south-1.amazonaws.com"
 }
 
 variable "docker_image_tag" {
