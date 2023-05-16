@@ -5,10 +5,9 @@ pipeline{
             steps{
                 sh '''
                     echo "Initializing the Terraform"
-                    export AWS_ACCESS_KEY_ID="ASIASKRH5RYAP46YKAUB"
-                    export AWS_SECRET_ACCESS_KEY="DmDroeEDryh6yvw8xxXMv4HIA/8RoNGmZPrrPaob"
-                    export AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEAcaDGV1LWNlbnRyYWwtMSJHMEUCIQDaMWYkSvm+oW81Jah9gQHwaOhYRfu3c+TswNONQSuvwgIgLhWomnhApXzUz1dqk1QJzs9XGfuIXwxmdUmuEwUyNsYqowMIMBAEGgwxNjAwNzEyNTc2MDAiDEW8jI7Z5XeB2fWtLyqAA7IZK+IpyBEDUxfXz56/t8pCIvmRcW51tZ/c8Pbbc+mefgYTD7SzOCy6dro2z8aufgVQszwRriB6i0M9Y2ip539nKVtStBoI9OgZ/eb9PMrutlRQdSTzHR9xEb/hPHQK7g5Vx1/NDDlGQ1nXlOyffhymZYorrRME8WY4Vln+f6Rn509pyBcqwPwYUqkYcSn1Xgr8JMCABbcHLZo3gfgNO2x7ZpT+ZRTrFUPqqNiUUV5TodqyW0N9t+7/AqpyabZUU8Y7C7rw21XA/Zi6vcM0P2zYrXs3iPj/302P8S7Fp2W27dNjqtje73giPwrBYjjzD+Dspu2CkxLaZxpONeOjpL4ZaTzl3klqn05Wm2G7R+ipFbFs1Z0TZRkXCd4/ANHxVxm45SnYlSTOPLFnU9ERSzstXtr1N1YmXIeTVJiUJNU7TNmhNx2Xgs0+ahs6ubw71feyYQEzz/VaaPC7VODBBJ4APrD2D/LqzRqxFkSvj60vyLqhum6koBw6lRU1Z2oK2DD8uo6jBjqmAYMby7i8zXeVQBXZGoplnq9HROdtvXhX0BgAqwXiGnsfLTJSchCMG2444RCOpK1Vb1sienXQL8ydTZvnIZAByU8YNVvHbEbh6tggbc8Fvcqe+Gybtp5+5MPQkOu+hNQfwhcTbSPKt8UzctDdo+9kIf3IqCW5Q/N92C0i7asVBvtPhjObT1Cx5Jwop9gyArvCMd0RPIr9L6JnEJ8KAI0cg5a/CtuQ+P4="                   
-                    terraform -version
+export AWS_ACCESS_KEY_ID="ASIASKRH5RYALWNT7H4J"
+export AWS_SECRET_ACCESS_KEY="vw9oZFSG7FbNXMG8l1iCdv77EAT6KMmp/Dt6E/Hb"
+export AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEAcaDGV1LWNlbnRyYWwtMSJIMEYCIQDrmYMqHtiQ38G0rv13kh+UqBaLz3j/qWpNMWIKoRL+WQIhANb8vR+4iExqNRaLG3SjyAg7/sNqrXjqkkWj60dLy17MKqMDCDAQBBoMMTYwMDcxMjU3NjAwIgwtMKLcf64NdHqbHlAqgAOIUnG6PmeY7zfSSEmO9xuvjSJI4+euSrPyMbfGWpmmJssaNyuKbn3rW12PcC+jJrf2oxugtCm+GknU2Wvg8cX5dPMndDE3MjnV3b9PXuTy55VNyLV2YoYaGnuor46+ZsiGoMsKHqzAEfNw3iSl7XHhBGm/YiCm524gWjuhDIfzfi55Nk+ei3IYMscR+hoOGwSv5jy1FZcg/cemRefQQm0nLLGFWx+2zWWd7XeDe5jqwXgPmDVA2vtBhkhkvBldXBInkMaBPX7WD+2Xaq4xe+FoR7j3chXEV3z727dQrKuJHWELpQ5aPYMShsjWWNZrrDBVmzv/Udflxr7QCbrSzXOdk0RUFO9AVo57/DvuMPu2v3q0HZOs3WiDQyC3liZjshOsKCasPVTiXgIwEiWOQuB5QVFCvUz/25000R+AMkf+Mx2cca8mRtyKM6ATO97euST+scZm/T3ZBngMwKvPVE5e/GMbPRLTACmkH37yc8EqRG9aMXvs//EzUTKHXe574TowtbyOowY6pQEZ0kOBC7MHnpq/dN0RMcUXBELmIywdaY91iiXiJEL974GKILR5UJmHxXmL3EquD/DV7JmFgjBmBJXon34ODP38yd0lSEFlpw/96vdIWzJUpKUKXHe+s8m045rCjOQG33UOmn74nZ4ABhGtjw4y+aQDmqjM9DBI15joPr8RFan22KbxzoLbXXgY6T5TGHKZM3ioWKwnzT0Dw9XRVhzQebcHCgVGHxc="                    terraform -version
                     terraform init
                     terraform plan
                 '''
