@@ -4,7 +4,7 @@ pipeline{
         stage('Terraform check'){
             steps{
                 sh '''
-                    cd /tf
+                    cd ./to-do-app/tf
                     echo "Initializing the Terraform"
                     export AWS_ACCESS_KEY_ID="ASIASKRH5RYANPOOHOZP"
                     export AWS_SECRET_ACCESS_KEY="snAL/Co20dFtX/PYK6tFcpARb7qPc0Bq1hZqzSu7"
