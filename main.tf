@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-south-1" # Setting my region to mumbai. Use your own region here
+  region = "ap-south-1" 
 }
 
 data "aws_vpc" "default_vpc" {
