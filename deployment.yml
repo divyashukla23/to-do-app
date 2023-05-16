@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: node-todo-app
-        image: 154647635698.dkr.ecr.ap-southeast-1.amazonaws.com/todo-app-repo:latest
+        image: 029956535309.dkr.ecr.ap-south-1.amazonaws.com/todo-app-repo:latest
         imagePullPolicy: Always
         ports:
           - containerPort: 80
