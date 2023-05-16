@@ -24,7 +24,7 @@ pipeline{
             steps{
                 sh '''
                         echo "Configuring..."
-                        aws eks --region ap-south-1 update-kubeconfig --name todo-app-Cluster
+                        aws eks --region ap-south-1 update-kubeconfig --name todo-app
                 '''
             }
         }
